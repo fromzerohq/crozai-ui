@@ -6,6 +6,7 @@ export default function Logo() {
   return (
     <Link href="/" className="inline-flex shrink-0" aria-label="Cruip">
       <Image src={logo} alt="Cruip Logo" width={32} height={32} />
+      <h1 className="text-white text-[1.5rem] font-nacelle font-semibold ml-2 mt-1"  >Crozic</h1>
     </Link>
   );
 }
