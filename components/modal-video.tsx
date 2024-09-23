@@ -78,7 +78,7 @@ export default function ModalVideo({
                 fillRule="evenodd"
                 d="M10 20c5.523 0 10-4.477 10-10S15.523 0 10 0 0 4.477 0 10s4.477 10 10 10Zm3.5-10-5-3.5v7l5-3.5Z"
                 clipRule="evenodd"
-              />
+              />``
               <defs>
                 <linearGradient
                   id="pla"

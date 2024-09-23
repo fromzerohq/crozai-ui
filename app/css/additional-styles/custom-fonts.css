@@ -29,3 +29,11 @@
   font-display: fallback;
   src: url("fonts/nacelle-semibolditalic.woff2") format("woff2");
 }
+
+@font-face {
+  font-family: 'Proxima';
+  src: url('../../../resources/fonts/Proxima-Nova-Regular.otf') format('opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
