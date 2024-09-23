@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Open PRO",
-  description: "Page description",
+  title: "Crozaic",
+  description: "GenAI for Technical Content Creation",
 };
 
 import PageIllustration from "@/components/page-illustration";
