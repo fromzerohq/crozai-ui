@@ -21,7 +21,7 @@ export default function HeroHome() {
                 data-aos="fade-up"
                 data-aos-delay={200}
               >
-                Create technical content, tutorials, and onboarding courses from your codebase, tailored for developers and teams.
+                Create technical content, tutorials, and onboarding courses from your codebase with digital humans, tailored for developers and teams.
               </p>
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
                 <div data-aos="fade-up" data-aos-delay={400}>
