@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Crozaic",
+  title: "Crozai",
   description: "GenAI for Technical Content Creation",
 };
 
