@@ -8,7 +8,7 @@ import ModalVideo from "@/components/modal-video";
 
 export default function HeroHome() {
   // State to handle which tab is active
-  const [activeTab, setActiveTab] = useState("api-demo");
+  const [activeTab, setActiveTab] = useState<keyof typeof tabs>("api-demo");
 
   // Tab content object for each demo video
   const tabs = {
@@ -68,30 +68,29 @@ export default function HeroHome() {
             </div>
           </div>
 
-         {/* New Heading for video tabs */}
-<div className="pb-8 text-center">
-  <h2
-    className="text-3xl font-small bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-400 md:text-4xl"
-    data-aos="fade-up"
-  >
-   Generate Tech Content with Digital Humans
-  </h2>
-</div>
-
+          {/* New Heading for video tabs */}
+          <div className="pb-8 text-center">
+            <h2
+              className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-400 md:text-4xl"
+              data-aos="fade-up"
+            >
+              Discover Our Demos
+            </h2>
+          </div>
 
           {/* Tabs for different demos */}
           <div className="flex justify-center space-x-6 mb-8">
             {Object.keys(tabs).map((tabKey) => (
               <button
                 key={tabKey}
-                onClick={() => setActiveTab(tabKey)}
+                onClick={() => setActiveTab(tabKey as keyof typeof tabs)}
                 className={`px-6 py-3 text-lg rounded-full transition-all ${
                   activeTab === tabKey
                     ? "bg-indigo-600 text-white"
                     : "bg-gradient-to-b from-gray-800 to-gray-800/60 text-white-800"
                 }`}
               >
-                {tabs[tabKey]}
+                {tabs[tabKey as keyof typeof tabs]}
               </button>
             ))}
           </div>
