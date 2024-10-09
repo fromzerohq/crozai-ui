@@ -11,6 +11,8 @@ interface ModalVideoProps {
   thumbWidth: number;
   thumbHeight: number;
   thumbAlt: string;
+  videoUrl: string; 
+  videoTitle: string// Add this prop to accept the video URL
 }
 
 export default function ModalVideo({
@@ -18,6 +20,8 @@ export default function ModalVideo({
   thumbWidth,
   thumbHeight,
   thumbAlt,
+  videoUrl,
+  videoTitle // Destructure videoUrl from props
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -108,8 +112,8 @@ export default function ModalVideo({
             <div className="relative" style={{ paddingBottom: '56.25%' }}>
               <iframe
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://player.elai.io/66ffd233f86d7c90e96888c5"
-                title="CrozAI API Usecase Video Demo"
+                src={videoUrl} 
+                title={videoTitle}
                 frameBorder="0"
                 allow="autoplay; fullscreen"
                 allowFullScreen

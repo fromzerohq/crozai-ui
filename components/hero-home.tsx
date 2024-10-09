@@ -1,7 +1,22 @@
+"use client"; // Mark the file as a Client Component
+
+import { useState } from "react";
 import VideoThumb from "@/public/images/thumb-2.png";
+import BlockchainThumb from "@/public/images/web3_thumbnail.jpg";
+import MsalThumbnail from "@/public/images/msal_thumbnail.jpg";
 import ModalVideo from "@/components/modal-video";
 
 export default function HeroHome() {
+  // State to handle which tab is active
+  const [activeTab, setActiveTab] = useState("api-demo");
+
+  // Tab content object for each demo video
+  const tabs = {
+    "api-demo": "API",
+    "codebase-demo": "Codebase",
+    "web3-demo": "Web3",
+  };
+
   return (
     <section>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -21,7 +36,9 @@ export default function HeroHome() {
                 data-aos="fade-up"
                 data-aos-delay={200}
               >
-                Create technical content, tutorials, and onboarding courses from your codebase with digital humans, tailored for developers and teams.
+                Create technical content, tutorials, and onboarding courses from
+                your codebase with digital humans, tailored for developers and
+                teams.
               </p>
               <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
                 <div data-aos="fade-up" data-aos-delay={400}>
@@ -51,12 +68,73 @@ export default function HeroHome() {
             </div>
           </div>
 
-          <ModalVideo
-            thumb={VideoThumb}
-            thumbWidth={1104}
-            thumbHeight={576}
-            thumbAlt="Modal video thumbnail"
-          />
+         {/* New Heading for video tabs */}
+<div className="pb-8 text-center">
+  <h2
+    className="text-3xl font-small bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-400 md:text-4xl"
+    data-aos="fade-up"
+  >
+   Generate Tech Content with Digital Humans
+  </h2>
+</div>
+
+
+          {/* Tabs for different demos */}
+          <div className="flex justify-center space-x-6 mb-8">
+            {Object.keys(tabs).map((tabKey) => (
+              <button
+                key={tabKey}
+                onClick={() => setActiveTab(tabKey)}
+                className={`px-6 py-3 text-lg rounded-full transition-all ${
+                  activeTab === tabKey
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gradient-to-b from-gray-800 to-gray-800/60 text-white-800"
+                }`}
+              >
+                {tabs[tabKey]}
+              </button>
+            ))}
+          </div>
+
+          {/* Animated video content */}
+          <div
+            className="relative overflow-hidden"
+            data-aos="fade-in"
+            data-aos-duration="500"
+          >
+            <div className="transition-transform duration-500">
+              {activeTab === "api-demo" && (
+                <ModalVideo
+                  thumb={VideoThumb}
+                  thumbWidth={1104}
+                  thumbHeight={576}
+                  thumbAlt="API Demo"
+                  videoUrl="https://player.elai.io/66ffd233f86d7c90e96888c5"
+                  videoTitle="CrozAI API Usecase Video Demo"
+                />
+              )}
+              {activeTab === "codebase-demo" && (
+                <ModalVideo
+                  thumb={MsalThumbnail}
+                  thumbWidth={1104}
+                  thumbHeight={576}
+                  thumbAlt="Codebase Demo"
+                  videoUrl="https://player.elai.io/67029454f86d7c90e970d42d"
+                  videoTitle="CrozAI Codebase Explanation Video Demo"
+                />
+              )}
+              {activeTab === "web3-demo" && (
+                <ModalVideo
+                  thumb={BlockchainThumb}
+                  thumbWidth={1104}
+                  thumbHeight={576}
+                  thumbAlt="Web3 Demo"
+                  videoUrl="https://player.elai.io/67059a1aa77c073ddc32195b"
+                  videoTitle="CrozAI Web3 Usecase Video Demo"
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
