@@ -12,7 +12,8 @@ interface ModalVideoProps {
   thumbHeight: number;
   thumbAlt: string;
   videoUrl: string; 
-  videoTitle: string// Add this prop to accept the video URL
+  videoTitle: string
+  videoDuration: string
 }
 
 export default function ModalVideo({
@@ -21,10 +22,11 @@ export default function ModalVideo({
   thumbHeight,
   thumbAlt,
   videoUrl,
-  videoTitle // Destructure videoUrl from props
+  videoTitle,
+  videoDuration
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
+  console.log(videoDuration);
   return (
     <div className="relative">
       {/* Secondary illustration */}
@@ -90,8 +92,8 @@ export default function ModalVideo({
             </svg>
             <span className="text-sm font-medium leading-tight text-gray-300">
               Watch Demo
-              <span className="text-gray-600"> - </span>
-              02:26
+               <span className="text-gray-600"> - </span> 
+               {videoDuration}
             </span>
           </span>
         </span>
