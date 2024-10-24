@@ -53,3 +53,44 @@ input[type="search"]::-webkit-search-results-decoration {
 .form-checkbox {
   @apply rounded;
 }
+
+
+/* Global Styles or CSS Module */
+
+/* Custom Cursor for Typewriter Effect */
+.custom-cursor {
+  display: inline-block;
+  width: 10px; /* Width of the cursor */
+  height: 20px; /* Height of the cursor */
+  background-color: #4f46e5; /* Cursor color */
+  margin-left: 2px; /* Space between text and cursor */
+  animation: blink 0.7s infinite; /* Blinking animation */
+}
+
+/* Blinking Animation */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+}
+
+/* Additional style for text effect */
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200%; /* Makes the gradient larger for smoother animation */
+  animation: gradient 5s linear infinite; /* Animates gradient */
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; /* Start position */
+  }
+  100% {
+    background-position: 100% 50%; /* End position */
+  }
+}
