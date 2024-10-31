@@ -54,7 +54,6 @@ input[type="search"]::-webkit-search-results-decoration {
   @apply rounded;
 }
 
-
 /* Global Styles or CSS Module */
 
 /* Custom Cursor for Typewriter Effect */
@@ -69,7 +68,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /* Blinking Animation */
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1; /* Fully visible */
   }
   50% {
@@ -92,5 +92,27 @@ input[type="search"]::-webkit-search-results-decoration {
   }
   100% {
     background-position: 100% 50%; /* End position */
+  }
+}
+
+/* In your CSS file */
+@layer utilities {
+  .bg-dark-grid {
+    background-color: #141414;
+    background-image: linear-gradient(
+        transparent,
+        transparent 95%,
+        rgba(255, 255, 255, 0.05) 95%,
+        rgba(255, 255, 255, 0.05)
+      ),
+      linear-gradient(
+        90deg,
+        transparent,
+        transparent 95%,
+        rgba(255, 255, 255, 0.05) 95%,
+        rgba(255, 255, 255, 0.05)
+      );
+    background-size: 50px 50px; /* Adjust for finer or coarser grid */
+    background-position: center;
   }
 }

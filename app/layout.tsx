@@ -1,9 +1,10 @@
-import "./css/style.css";
+import "@/css/style.css";
 
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
-import Header from "@/components/ui/header";
+import Header from "@/components/ui/authheader";
+import PageIllustration from "@/components/page-illustration";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,7 +55,7 @@ export default function RootLayout({
         className={`${inter.variable} ${nacelle.variable} bg-gray-950 font-inter text-base text-gray-200 antialiased`}
       >
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
-          <Header />
+          {/* <PageIllustration /> */}
           {children}
         </div>
       </body>

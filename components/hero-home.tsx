@@ -71,24 +71,23 @@ export default function HeroHome() {
           {/* New Heading for video tabs */}
           <div className="pb-8 text-center">
             <h2
-              className="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-gray-600 to-gray-400 md:text-4xl"
+              className="bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-2xl font-semibold text-transparent md:text-4xl"
               data-aos="fade-up"
             >
               Unviel Our Previews
             </h2>
-          </div> 
-       
+          </div>
 
           {/* Tabs for different demos */}
-          <div className="flex justify-center space-x-6 mb-8">
+          <div className="mb-8 flex justify-center space-x-6">
             {Object.keys(tabs).map((tabKey) => (
               <button
                 key={tabKey}
                 onClick={() => setActiveTab(tabKey as keyof typeof tabs)}
-                className={`px-6 py-3 text-lg rounded-full transition-all ${
+                className={`rounded-full px-6 py-3 text-lg transition-all ${
                   activeTab === tabKey
                     ? "bg-indigo-600 text-white"
-                    : "bg-gradient-to-b from-gray-800 to-gray-800/60 text-white-800"
+                    : "text-white-800 bg-gradient-to-b from-gray-800 to-gray-800/60"
                 }hover:shadow-lg hover:bg-indigo-500`}
               >
                 {tabs[tabKey as keyof typeof tabs]}

@@ -1,43 +1,70 @@
 "use client";
 
-import React from 'react';
-import ReactFlow, { MiniMap, Controls, useNodesState, useEdgesState } from 'react-flow-renderer';
+import React, { useCallback } from "react";
+import {
+  ReactFlow,
+  addEdge,
+  Controls,
+  useNodesState,
+  useEdgesState,
+} from "@xyflow/react";
 
-const initialElements = [
-  { id: '1', data: { label: 'samples' }, position: { x: 250, y: 5 }, style: { backgroundColor: '#4f46e5', color: 'white', borderRadius: '5px' } },
-  { id: '2', data: { label: 'auth-code' }, position: { x: 100, y: 100 }, style: { backgroundColor: '#3b82f6', color: 'white', borderRadius: '5px' } },
-  { id: '3', data: { label: 'refresh-token' }, position: { x: 250, y: 100 }, style: { backgroundColor: '#3b82f6', color: 'white', borderRadius: '5px' } },
-  { id: '4', data: { label: 'Config' }, position: { x: 150, y: 200 }, style: { backgroundColor: '#3b82f6', color: 'white', borderRadius: '5px' } },
-  { id: '5', data: { label: 'CustomConfig' }, position: { x: 150, y: 300 }, style: { backgroundColor: '#3b82f6', color: 'white', borderRadius: '5px' } },
-  { id: '6', data: { label: 'client-credentials' }, position: { x: 400, y: 100 }, style: { backgroundColor: '#3b82f6', color: 'white', borderRadius: '5px' } },
-  { id: 'e1-2', source: '1', target: '2', animated: true },
-  { id: 'e1-3', source: '1', target: '3', animated: true },
-  { id: 'e3-4', source: '3', target: '4', animated: true },
-  { id: 'e4-5', source: '4', target: '5', animated: true },
-  { id: 'e1-6', source: '1', target: '6', animated: true },
-];
+import "./archi.css";
 
-const TreeDiagram = () => {
-  const [nodes, setNodes] = useNodesState(initialElements.filter(e => !e.source));
-  const [edges, setEdges] = useEdgesState(initialElements.filter(e => e.source));
+import {
+  nodes as initialNodes,
+  edges as initialEdges,
+} from "./initial-elements";
+
+import AnnotationNode from "./AnnotationNode";
+import GraphNode from "./GraphNode";
+
+import { rfStyle, gridOverlayStyle } from "./style";
+import "@xyflow/react/dist/style.css";
+
+const nodeTypes = {
+  annotation: AnnotationNode,
+  graphnode: GraphNode,
+};
+
+// const edgeTypes = {
+//   button: ButtonEdge,
+// };
+
+const nodeClassName = (node) => node.type;
+
+const DependencyGraph = () => {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+
+  const proOptions = { hideAttribution: true, account: "veerravi" };
 
   const onNodeClick = (event, node) => {
     alert(`You clicked on ${node.data.label}`);
-    // Implement more complex logic for selection here
   };
 
+  const onConnect = useCallback(
+    (params) => setEdges((eds) => addEdge(params, eds)),
+    [],
+  );
+
   return (
-    <div style={{ height: '500px' }}>
+    <div className="archi">
       <ReactFlow
         nodes={nodes}
+        nodeTypes={nodeTypes}
         edges={edges}
-        onNodeClick={onNodeClick} // Add the click handler
+        onNodeClick={onNodeClick}
+        style={rfStyle}
+        fitView
+        proOptions={proOptions}
+        className="overview h-full w-full"
       >
-        <MiniMap />
+        <div style={gridOverlayStyle}></div>
         <Controls />
       </ReactFlow>
     </div>
   );
 };
 
-export default TreeDiagram;
+export default DependencyGraph;

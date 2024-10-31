@@ -1,0 +1,15 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "data": { "label": "samples" },
+      "position": { "x": 50, "y": 100 },
+      "style": {
+        "backgroundColor": "#4f46e5",
+        "color": "white",
+        "borderRadius": "5px"
+      }
+    }
+  ],
+  "edges": [{ "id": "e1-2", "source": "1", "target": "2", "animated": true }]
+}

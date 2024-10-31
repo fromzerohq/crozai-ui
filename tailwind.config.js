@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        crozai: '#323214'
+      },
       fontFamily: {
         inter: ["var(--font-inter)", "sans-serif"],
         nacelle: ["var(--font-nacelle)", "sans-serif"],

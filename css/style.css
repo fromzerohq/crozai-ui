@@ -5,3 +5,7 @@
 @import "additional-styles/utility-patterns.css";
 @import "additional-styles/theme.css";
 @import "tailwindcss/utilities";
+
+/* .react-flow__attribution {
+  display: none !important;
+} */
