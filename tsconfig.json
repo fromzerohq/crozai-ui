@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/debug/archives/page.jsx"
-, "app/(main)/archi/EleNode.jsx"  ],
+, "app/(main)/archi/EleNode.jsx", "app/(main)/archi/transformGraphToReactFlow.js", "app/(main)/archi/useFetchGraphData.tsx"  ],
   "exclude": ["node_modules"]
 }
