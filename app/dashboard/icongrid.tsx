@@ -6,7 +6,7 @@ const IconGrid = () => {
   const router = useRouter();
 
   // Define a function to handle navigation
-  const handleClick = (type) => {
+  const handleClick = (type: any) => {
     router.push(`/gtc/new?type=${type}`);
   };
 

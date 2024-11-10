@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, memo } from "react";
 import {
   ReactFlow,
   addEdge,
   Controls,
   useNodesState,
   useEdgesState,
+  NodeTypes,
+  EdgeTypes,
 } from "@xyflow/react";
 
 import "./archi.css";
@@ -20,15 +22,13 @@ import Loader from "@/app/components/loader";
 
 import { rfStyle, gridOverlayStyle } from "./style";
 import "@xyflow/react/dist/style.css";
-import type { memo } from "react";
 
-const nodeTypes = {
-  annotation: AnnotationNode,
+const nodeTypes: any = {
   graphnode: GraphNode,
 };
 
-const edgeTypes = {
-  graphedge: GraphEdge,
+const edgeTypes: any = {
+  graphedge: memo(GraphEdge),
 };
 
 const DependencyGraph = ({ datasetCode }) => {

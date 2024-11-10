@@ -1,12 +1,31 @@
 // components/Editor/styles.js
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
+
+interface ButtonProps {
+  primary?: boolean;
+  secondary?: boolean;
+  fullWidth?: boolean;
+}
+
+interface TabProps {
+  active?: boolean;
+}
+
+interface IconButtonProps {
+  active?: boolean;
+}
+
+interface BottomTabButtonProps {
+  active?: boolean;
+}
 
 export const EditorLayout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
   background: linear-gradient(135deg, #1e1e1e, #262626);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
 `;
 
 export const TopBar = styled.div`
@@ -109,13 +128,20 @@ export const CanvasContent = styled.div`
   justify-content: center;
   align-items: center;
   background: #2a2a2a;
-  background-image: 
-    linear-gradient(45deg, rgba(80, 80, 80, 0.2) 25%, transparent 25%),
+  background-image: linear-gradient(
+      45deg,
+      rgba(80, 80, 80, 0.2) 25%,
+      transparent 25%
+    ),
     linear-gradient(-45deg, rgba(80, 80, 80, 0.2) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, rgba(80, 80, 80, 0.2) 75%),
     linear-gradient(-45deg, transparent 75%, rgba(80, 80, 80, 0.2) 75%);
   background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0px;
 `;
 
 export const CanvasBottom = styled.div`
@@ -156,26 +182,27 @@ export const TabBar = styled.div`
   background: #333;
 `;
 
-export const Tab = styled.button`
+export const Tab = styled.button<TabProps>`
   padding: 12px 16px;
   border: none;
   background: none;
   cursor: pointer;
   font-size: 14px;
-  color: ${props => props.active ? '#4db3ff' : '#bbb'};
-  border-bottom: 2px solid ${props => props.active ? '#4db3ff' : 'transparent'};
+  color: ${(props) => (props.active ? "#4db3ff" : "#bbb")};
+  border-bottom: 2px solid
+    ${(props) => (props.active ? "#4db3ff" : "transparent")};
   display: flex;
   align-items: center;
   gap: 8px;
   transition: all 0.2s;
-  
+
   &:hover {
     color: #4db3ff;
-    background: ${props => props.active ? 'transparent' : '#333'};
+    background: ${(props) => (props.active ? "transparent" : "#333")};
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<ButtonProps>`
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
@@ -185,29 +212,35 @@ export const Button = styled.button`
   align-items: center;
   gap: 8px;
   transition: all 0.2s;
-  
-  ${props => props.primary && css`
-    background: linear-gradient(145deg, #4db3ff, #367ab7);
-    color: white;
-    
-    &:hover {
-      background: linear-gradient(145deg, #367ab7, #4db3ff);
-    }
-  `}
-  
-  ${props => props.secondary && css`
-    background: #444;
-    color: #ddd;
-    
-    &:hover {
-      background: #555;
-    }
-  `}
 
-  ${props => props.fullWidth && css`
-    width: 100%;
-    justify-content: center;
-  `}
+  ${(props) =>
+    props.primary &&
+    css`
+      background: linear-gradient(145deg, #4db3ff, #367ab7);
+      color: white;
+
+      &:hover {
+        background: linear-gradient(145deg, #367ab7, #4db3ff);
+      }
+    `}
+
+  ${(props) =>
+    props.secondary &&
+    css`
+      background: #444;
+      color: #ddd;
+
+      &:hover {
+        background: #555;
+      }
+    `}
+
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+      justify-content: center;
+    `}
 `;
 
 export const MediaBox = styled.div`
@@ -223,7 +256,7 @@ export const MediaBox = styled.div`
   gap: 8px;
   cursor: pointer;
   transition: all 0.2s;
-  
+
   &:hover {
     background: #444;
     border-color: #4db3ff;
@@ -239,7 +272,7 @@ export const Grid = styled.div`
   padding: 16px;
 `;
 
-export const IconButton = styled.button`
+export const IconButton = styled.button<IconButtonProps>`
   width: 32px;
   height: 32px;
   border-radius: 4px;
@@ -251,16 +284,18 @@ export const IconButton = styled.button`
   justify-content: center;
   color: #aaa;
   transition: all 0.2s;
-  
+
   &:hover {
     background: #444;
     color: #4db3ff;
   }
 
-  ${props => props.active && css`
-    color: #4db3ff;
-    background: #333;
-  `}
+  ${(props) =>
+    props.active &&
+    css`
+      color: #4db3ff;
+      background: #333;
+    `}
 `;
 
 export const PropertyPanel = styled.div`
@@ -288,7 +323,7 @@ export const Input = styled.input`
   background: #2a2a2a;
   color: #ddd;
   transition: all 0.2s;
-  
+
   &:focus {
     border-color: #4db3ff;
     outline: none;
@@ -307,18 +342,17 @@ export const BottomTabs = styled.div`
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
 `;
 
-// Example button used for bottom navigation inside BottomTabs
-export const BottomTabButton = styled.button`
+export const BottomTabButton = styled.button<BottomTabButtonProps>`
   flex: 1;
   padding: 12px;
   border: none;
   background: #333;
-  color: ${props => props.active ? '#4db3ff' : '#bbb'};
+  color: ${(props) => (props.active ? "#4db3ff" : "#bbb")};
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
-  border-top: 3px solid ${props => props.active ? '#4db3ff' : 'transparent'};
-  
+  border-top: 3px solid ${(props) => (props.active ? "#4db3ff" : "transparent")};
+
   &:hover {
     color: #4db3ff;
     background: #2a2a2a;
@@ -332,7 +366,9 @@ export const TabOption = styled.div`
   color: #555;
   font-weight: 500;
   text-align: center;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 
   &:hover {
     color: #007bff;

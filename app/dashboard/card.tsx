@@ -1,5 +1,7 @@
-const Card = ({ children, className }) => (
-  <div className={`rounded-xl shadow-lg bg-gray-900 border border-gray-800 overflow-hidden ${className}`}>
+const Card = ({ children, className }: any) => (
+  <div
+    className={`overflow-hidden rounded-xl border border-gray-800 bg-gray-900 shadow-lg ${className}`}
+  >
     {children}
   </div>
 );

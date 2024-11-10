@@ -54,7 +54,6 @@ const GTCCreator = () => {
                 autoStart: true, // Start automatically
                 loop: true, // Loop the typing effect
                 deleteSpeed: 50, // Speed at which text is deleted
-                pauseFor: 1000, // Pause before starting the next string
               }}
             />
           </h2>

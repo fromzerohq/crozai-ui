@@ -13,7 +13,7 @@ const rfStyle = {
   overflow: "hidden",
 };
 
-const gridOverlayStyle = {
+const gridOverlayStyle: React.CSSProperties = {
   content: '""',
   position: "absolute",
   top: 0,

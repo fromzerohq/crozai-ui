@@ -56,7 +56,7 @@ const RepoImportPage = () => {
 
   const handleNavigation = async () => {
     setIsExiting(true);
-    setTimeout(() => router.push("/gtc/api/archi"), 500); // Redirect after animation completes
+    setTimeout(() => router.push("/gtc/repo/archi"), 500); // Redirect after animation completes
   };
 
   const handleImport = async () => {
