@@ -1,0 +1,50 @@
+<svg width="846" height="594" viewBox="0 0 846 594" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark Gradient Shape -->
+  <g filter="url(#blur1)">
+    <path fill="url(#gradient1)" d="M96 19L670 405.9L343.816 501L96 19Z" />
+  </g>
+
+  <!-- Purple Gradient Shape -->
+  <g filter="url(#blur2)">
+    <path fill="url(#gradient2)" d="M176 -42L750 344.9L423.816 440L176 -42Z" />
+  </g>
+
+  <!-- Masked Gradient Overlay -->
+  <mask id="mask1" x="96" y="-42" width="654" height="543" maskUnits="userSpaceOnUse">
+    <path fill="white" d="M750 344.9L176 -42L266.423 133.872L96 19L343.816 501L670 405.9L631 379.6L750 344.9Z" />
+  </mask>
+  <g mask="url(#mask1)">
+    <path fill="url(#gradient3)" fill-opacity="0.64" d="M575.652 131.95C447.946 239.436 276.732 298.518 93.158 298.518C8.982 298.158 -69.032 286.482 -142 264.423V270.576C-69.032 292.454 8.982 304.067 89.576 304.067L93.158 304.067C276.732 304.067 447.946 244.986 575.652 137.5C723.259 15.588 800.94 -156.595 805.221 -362H799.029C794.758 -158.341 717.799 12.306 575.652 131.95Z" />
+  </g>
+
+  <!-- Definitions for Gradients and Filters -->
+  <defs>
+    <!-- Dark Gradient Definition -->
+    <linearGradient id="gradient1" x1="-16.293" y1="177.657" x2="149.25" y2="525.961" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#374151" stop-opacity="0.8"/>
+      <stop offset="0.382" stop-color="#374151" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#374151" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- Purple Gradient Definition -->
+    <linearGradient id="gradient2" x1="63.707" y1="116.657" x2="229.25" y2="464.961" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1" stop-opacity="0.8"/>
+      <stop offset="0.382" stop-color="#6366F1" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- Masked Gradient Overlay Definition -->
+    <linearGradient id="gradient3" x1="495" y1="-95" x2="422" y2="275" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366F1" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- Blurs for Gradient Shapes -->
+    <filter id="blur1" x="3.578" y="-73.422" width="758.843" height="666.843" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="46.211"/>
+    </filter>
+    <filter id="blur2" x="83.578" y="-134.422" width="758.843" height="666.843" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="46.211"/>
+    </filter>
+  </defs>
+</svg>

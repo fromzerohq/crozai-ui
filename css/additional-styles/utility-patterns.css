@@ -1,0 +1,118 @@
+/* Buttons */
+.btn,
+.btn-sm {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all;
+}
+
+.btn {
+  @apply px-4 py-[11px];
+}
+
+.btn-sm {
+  @apply px-3 py-[7px];
+}
+
+/* Forms */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply border border-gray-700 bg-gray-900/50 focus:border-gray-600 focus:ring-0 focus:ring-offset-0;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply rounded-lg px-4 py-2.5 text-sm text-gray-200;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-600;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply text-indigo-500;
+}
+
+.form-checkbox {
+  @apply rounded;
+}
+
+/* Global Styles or CSS Module */
+
+/* Custom Cursor for Typewriter Effect */
+.custom-cursor {
+  display: inline-block;
+  width: 10px; /* Width of the cursor */
+  height: 20px; /* Height of the cursor */
+  background-color: #4f46e5; /* Cursor color */
+  margin-left: 2px; /* Space between text and cursor */
+  animation: blink 0.7s infinite; /* Blinking animation */
+}
+
+/* Blinking Animation */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    opacity: 0; /* Invisible */
+  }
+}
+
+/* Additional style for text effect */
+.bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200%; /* Makes the gradient larger for smoother animation */
+  animation: gradient 5s linear infinite; /* Animates gradient */
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; /* Start position */
+  }
+  100% {
+    background-position: 100% 50%; /* End position */
+  }
+}
+
+/* In your CSS file */
+@layer utilities {
+  .bg-dark-grid {
+    background-color: #141414;
+    background-image: linear-gradient(
+        transparent,
+        transparent 95%,
+        rgba(255, 255, 255, 0.05) 95%,
+        rgba(255, 255, 255, 0.05)
+      ),
+      linear-gradient(
+        90deg,
+        transparent,
+        transparent 95%,
+        rgba(255, 255, 255, 0.05) 95%,
+        rgba(255, 255, 255, 0.05)
+      );
+    background-size: 50px 50px; /* Adjust for finer or coarser grid */
+    background-position: center;
+  }
+}

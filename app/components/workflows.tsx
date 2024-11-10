@@ -2,7 +2,7 @@ import Image from "next/image";
 import WorflowImg01 from "@/public/images/workflow-01.png";
 import WorflowImg02 from "@/public/images/workflow-02.png";
 import WorflowImg03 from "@/public/images/workflow-03.png";
-import Spotlight from "@/components/spotlight";
+import Spotlight from "@/app/components/spotlight";
 
 export default function Workflows() {
   return (
@@ -20,7 +20,10 @@ export default function Workflows() {
               Transform Codebases into Clear Tutorials
             </h2>
             <p className="text-lg text-indigo-200/65">
-            Effortlessly transform complex codebases into clear, AI-generated tutorials, reducing onboarding time and enhancing knowledge sharing for your teams. Empower your developers with instant, customized learning content that fits your tech stack
+              Effortlessly transform complex codebases into clear, AI-generated
+              tutorials, reducing onboarding time and enhancing knowledge
+              sharing for your teams. Empower your developers with instant,
+              customized learning content that fits your tech stack
             </p>
           </div>
           {/* Spotlight items */}
@@ -66,7 +69,8 @@ export default function Workflows() {
                     </span>
                   </div>
                   <p className="text-indigo-200/65">
-                  Automatically create custom tutorials using AI digital humans to simplify complex codebase explanations
+                    Automatically create custom tutorials using AI digital
+                    humans to simplify complex codebase explanations
                   </p>
                 </div>
               </div>
@@ -112,7 +116,8 @@ export default function Workflows() {
                     </span>
                   </div>
                   <p className="text-indigo-200/65">
-                  Tailored training programs for developers, making onboarding and skill enhancement smoother.
+                    Tailored training programs for developers, making onboarding
+                    and skill enhancement smoother.
                   </p>
                 </div>
               </div>
@@ -153,12 +158,13 @@ export default function Workflows() {
                   <div className="mb-3">
                     <span className="btn-sm relative rounded-full bg-gray-800/40 px-2.5 py-0.5 text-xs font-normal before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(to_bottom,theme(colors.gray.700/.15),theme(colors.gray.700/.5))_border-box] before:[mask-composite:exclude_!important] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] hover:bg-gray-800/60">
                       <span className="bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                      Documentations Walkthroughs
+                        Documentations Walkthroughs
                       </span>
                     </span>
                   </div>
                   <p className="text-indigo-200/65">
-                  Transform your documentation into clear, interactive video guides with AI digital assistants for better understanding.
+                    Transform your documentation into clear, interactive video
+                    guides with AI digital assistants for better understanding.
                   </p>
                 </div>
               </div>
