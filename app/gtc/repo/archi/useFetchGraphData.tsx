@@ -16,7 +16,7 @@ const useFetchGraphData = (datasetCode) => {
     const fetchData = async () => {
       console.log("Fetching data...");
       try {
-        const url = `http://localhost:8000/api/v1/graph/${datasetCode}`;
+        const url = `https://crozai-service.onrender.com/api/v1/graph/${datasetCode}`;
         const response = await axios.get(url);
         console.log("Response:", response.data);
 

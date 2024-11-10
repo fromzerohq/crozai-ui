@@ -4,7 +4,7 @@ import { useState } from "react";
 import VideoThumb from "@/public/images/thumb-2.png";
 import BlockchainThumb from "@/public/images/web3_thumbnail.jpg";
 import MsalThumbnail from "@/public/images/msal_thumbnail.jpg";
-import ModalVideo from "@/components/modal-video";
+import ModalVideo from "@/app/components/modal-video";
 
 export default function HeroHome() {
   // State to handle which tab is active

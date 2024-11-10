@@ -227,6 +227,7 @@
 
 .react-flow__controls {
   background-color: #2a8af6;
+  margin-bottom: 60px !important;
 }
 
 .react-flow__controls-button {

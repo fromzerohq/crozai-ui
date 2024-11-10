@@ -16,6 +16,7 @@ import useFetchGraphData from "./useFetchGraphData";
 import AnnotationNode from "./AnnotationNode";
 import GraphNode from "./GraphNode";
 import GraphEdge from "./GraphEdge";
+import Loader from "@/app/components/loader";
 
 import { rfStyle, gridOverlayStyle } from "./style";
 import "@xyflow/react/dist/style.css";
@@ -70,7 +71,7 @@ const DependencyGraph = ({ datasetCode }) => {
     }
   }, [loading, apiNodes, apiEdges, setNodes, setEdges]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
   if (error) return <div>{error}</div>;
 
   return (
