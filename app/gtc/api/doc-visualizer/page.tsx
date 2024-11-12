@@ -1,53 +1,95 @@
-"use client"
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { FaFolder, FaPlayCircle } from 'react-icons/fa';
-import { BiChevronDown, BiChevronUp, BiVideo } from 'react-icons/bi';
+"use client";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { FaFolder, FaPlayCircle } from "react-icons/fa";
+import { BiChevronDown, BiChevronUp, BiVideo } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 
 const apiDoc = {
-  title: 'API Documentation',
-  description: 'Visualize your API structure, select pages, and create custom video tutorials.',
+  title: "Summary",
+  description:
+    "Visualize your API structure, select pages, and create custom video tutorials.",
   pages: [
     {
-      id: '1',
-      title: 'Introduction',
-      description: 'A brief overview of the API structure, use cases, and introduction to core functionalities.',
+      id: "1",
+      title: "Introduction",
+      description:
+        "A brief overview of the API structure, use cases, and introduction to core functionalities.",
       endpoints: 1,
-      videoContent: 'This video will cover the API overview, its purpose, and main components in a minute.',
+      videoContent:
+        "This video will cover the API overview, its purpose, and main components in a minute.",
       subPages: [],
     },
     {
-      id: '2',
-      title: 'Authentication',
-      description: 'Learn about the various methods of authentication, including OAuth and API Key approaches.',
+      id: "2",
+      title: "Authentication",
+      description:
+        "Learn about the various methods of authentication, including OAuth and API Key approaches.",
       endpoints: 4,
-      videoContent: 'The video will explain each authentication method, focusing on security and ease of use.',
+      videoContent:
+        "The video will explain each authentication method, focusing on security and ease of use.",
       subPages: [
-        { id: '2-1', title: 'OAuth', description: 'Details on OAuth for secure authentication.', endpoints: 2 },
-        { id: '2-2', title: 'API Key', description: 'Steps to authenticate using API keys.', endpoints: 2 },
+        {
+          id: "2-1",
+          title: "OAuth",
+          description: "Details on OAuth for secure authentication.",
+          endpoints: 2,
+        },
+        {
+          id: "2-2",
+          title: "API Key",
+          description: "Steps to authenticate using API keys.",
+          endpoints: 2,
+        },
       ],
     },
     {
-      id: '3',
-      title: 'User Management',
-      description: 'Endpoints for managing user accounts, profiles, and roles.',
+      id: "3",
+      title: "User Management",
+      description: "Endpoints for managing user accounts, profiles, and roles.",
       endpoints: 6,
-      videoContent: 'Covers account creation, deletion, and user roles.',
+      videoContent: "Covers account creation, deletion, and user roles.",
       subPages: [
-        { id: '3-1', title: 'Create User', description: 'Endpoint for creating new users.', endpoints: 1 },
-        { id: '3-2', title: 'Delete User', description: 'Remove users from the system.', endpoints: 1 },
-        { id: '3-3', title: 'Update Profile', description: 'Edit user profile details.', endpoints: 2 },
+        {
+          id: "3-1",
+          title: "Create User",
+          description: "Endpoint for creating new users.",
+          endpoints: 1,
+        },
+        {
+          id: "3-2",
+          title: "Delete User",
+          description: "Remove users from the system.",
+          endpoints: 1,
+        },
+        {
+          id: "3-3",
+          title: "Update Profile",
+          description: "Edit user profile details.",
+          endpoints: 2,
+        },
       ],
     },
     {
-      id: '4',
-      title: 'Data Retrieval',
-      description: 'Fetching various data types with advanced filtering options.',
+      id: "4",
+      title: "Data Retrieval",
+      description:
+        "Fetching various data types with advanced filtering options.",
       endpoints: 5,
-      videoContent: 'Shows how to retrieve data with customizable queries.',
+      videoContent: "Shows how to retrieve data with customizable queries.",
       subPages: [
-        { id: '4-1', title: 'Get User Data', description: 'Retrieve user-specific data.', endpoints: 2 },
-        { id: '4-2', title: 'Filter Records', description: 'Advanced filtering on data sets.', endpoints: 3 },
+        {
+          id: "4-1",
+          title: "Get User Data",
+          description: "Retrieve user-specific data.",
+          endpoints: 2,
+        },
+        {
+          id: "4-2",
+          title: "Filter Records",
+          description: "Advanced filtering on data sets.",
+          endpoints: 3,
+        },
       ],
     },
     // More pages as needed...
@@ -127,7 +169,7 @@ const Button = styled.button`
 `;
 
 const GenerateButton = styled(Button)`
- background: linear-gradient(90deg, #7b3fe4, #5a2bb1);
+  background: linear-gradient(90deg, #7b3fe4, #5a2bb1);
   color: #e0e0e0;
   padding: 12px 24px;
   border: none;
@@ -140,7 +182,7 @@ const GenerateButton = styled(Button)`
   right: 50px;
   transition: all 0.3s ease;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-  
+
   &:hover {
     background: linear-gradient(90deg, #5a2bb1, #7b3fe4);
     transform: scale(1.05);
@@ -152,6 +194,7 @@ const GenerateButton = styled(Button)`
 `;
 
 const ApiDocVisualizer = () => {
+  const router = useRouter();
   const [expandedPages, setExpandedPages] = useState({});
   const [selectedPages, setSelectedPages] = useState([]);
 
@@ -161,12 +204,15 @@ const ApiDocVisualizer = () => {
 
   const handleSelect = (page) => {
     const isSelected = selectedPages.includes(page.id);
-    setSelectedPages(isSelected ? selectedPages.filter((p) => p !== page.id) : [...selectedPages, page.id]);
+    setSelectedPages(
+      isSelected
+        ? selectedPages.filter((p) => p !== page.id)
+        : [...selectedPages, page.id],
+    );
   };
 
   const generateVideos = () => {
-    // Placeholder: Handle video generation here.
-    alert('Videos are being generated!');
+    router.push("/preview");
   };
 
   return (
@@ -174,15 +220,13 @@ const ApiDocVisualizer = () => {
       <Header>{apiDoc.title}</Header>
       <Description>{apiDoc.description}</Description>
 
-      <GenerateButton onClick={generateVideos}>
-        Generate Videos
-      </GenerateButton>
+      <GenerateButton onClick={generateVideos}>Generate Videos</GenerateButton>
 
       {apiDoc.pages.map((page) => (
         <GroupBox key={page.id}>
           <GroupHeader onClick={() => toggleDropdown(page.id)}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <FaFolder style={{ marginRight: '10px' }} />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <FaFolder style={{ marginRight: "10px" }} />
               {page.title}
             </div>
             {expandedPages[page.id] ? <BiChevronUp /> : <BiChevronDown />}
@@ -191,24 +235,35 @@ const ApiDocVisualizer = () => {
           <StatBox>Endpoints: {page.endpoints}</StatBox>
 
           {expandedPages[page.id] && (
-            <div style={{ marginTop: '10px' }}>
+            <div style={{ marginTop: "10px" }}>
               <DescriptionBox>{page.description}</DescriptionBox>
-              <p style={{ color: '#8f8f8f', fontStyle: 'italic' }}>{page.videoContent}</p>
+              <p style={{ color: "#8f8f8f", fontStyle: "italic" }}>
+                {page.videoContent}
+              </p>
 
               {page.subPages.length > 0 && (
-                <div style={{ marginTop: '10px' }}>
+                <div style={{ marginTop: "10px" }}>
                   {page.subPages.map((subPage) => (
-                    <div key={subPage.id} style={{ marginBottom: '8px', paddingLeft: '15px' }}>
-                      <BiVideo style={{ color: '#7b3fe4', marginRight: '5px' }} />
+                    <div
+                      key={subPage.id}
+                      style={{ marginBottom: "8px", paddingLeft: "15px" }}
+                    >
+                      <BiVideo
+                        style={{ color: "#7b3fe4", marginRight: "5px" }}
+                      />
                       <strong>{subPage.title}</strong> - {subPage.description}
-                      <p style={{ fontSize: '0.85em', color: '#bfbfbf' }}>Endpoints: {subPage.endpoints}</p>
+                      <p style={{ fontSize: "0.85em", color: "#bfbfbf" }}>
+                        Endpoints: {subPage.endpoints}
+                      </p>
                     </div>
                   ))}
                 </div>
               )}
 
               <Button onClick={() => handleSelect(page)}>
-                {selectedPages.includes(page.id) ? 'Deselect' : 'Select for Video'}
+                {selectedPages.includes(page.id)
+                  ? "Deselect"
+                  : "Select for Video"}
               </Button>
             </div>
           )}

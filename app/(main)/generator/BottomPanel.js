@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { AlertCircle, Code, FileText } from 'lucide-react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { AlertCircle, Code, FileText } from "lucide-react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 // Styled components
 const Container = styled.div`
@@ -51,7 +51,7 @@ const TabButton = styled.button`
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
       z-index: 2;
     `}
-  
+
   svg {
     margin-right: 8px;
   }
@@ -108,7 +108,9 @@ const GenerateButton = styled.button`
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 
   &:hover {
     background: linear-gradient(109.6deg, #0d0d0d 10%, #0e61b0 90%);
@@ -120,8 +122,6 @@ const GenerateButton = styled.button`
     transform: translateY(1px);
   }
 `;
-
-
 
 const ResultBox = styled.div`
   padding: 12px;
@@ -156,32 +156,60 @@ const DiagramBox = styled.div`
 
 // SVG diagrams for visual representation
 const DatabaseDiagram = () => (
-  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4 6C4 3.791 7.134 2 12 2s8 1.791 8 4v12c0 2.209-3.134 4-8 4s-8-1.791-8-4V6z" stroke="#1a73e8" strokeWidth="1.5"/>
-    <ellipse cx="12" cy="6" rx="8" ry="3" fill="#333" stroke="#1a73e8" strokeWidth="1.5"/>
+  <svg
+    width="50"
+    height="50"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4 6C4 3.791 7.134 2 12 2s8 1.791 8 4v12c0 2.209-3.134 4-8 4s-8-1.791-8-4V6z"
+      stroke="#1a73e8"
+      strokeWidth="1.5"
+    />
+    <ellipse
+      cx="12"
+      cy="6"
+      rx="8"
+      ry="3"
+      fill="#333"
+      stroke="#1a73e8"
+      strokeWidth="1.5"
+    />
   </svg>
 );
 
 const APIDiagram = () => (
-  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5 12H19M5 12L8 8M5 12L8 16M19 12L16 8M19 12L16 16" stroke="#1a73e8" strokeWidth="1.5"/>
-    <circle cx="12" cy="12" r="10" stroke="#1a73e8" strokeWidth="1.5"/>
+  <svg
+    width="50"
+    height="50"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 12H19M5 12L8 8M5 12L8 16M19 12L16 8M19 12L16 16"
+      stroke="#1a73e8"
+      strokeWidth="1.5"
+    />
+    <circle cx="12" cy="12" r="10" stroke="#1a73e8" strokeWidth="1.5" />
   </svg>
 );
 
 // Main component
 export const BottomPanel = () => {
-  const [selectedTab, setSelectedTab] = useState('script');
-  const [prompt, setPrompt] = useState('');
-  const [result, setResult] = useState('');
+  const [selectedTab, setSelectedTab] = useState("script");
+  const [prompt, setPrompt] = useState("");
+  const [result, setResult] = useState("");
 
   const renderContent = () => {
     switch (selectedTab) {
-      case 'script':
+      case "script":
         return (
           <TextArea placeholder="Add a script description for this slide..." />
         );
-      case 'code':
+      case "code":
         return (
           <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
             {`// Sample code snippet
@@ -190,7 +218,7 @@ function greet() {
 }`}
           </SyntaxHighlighter>
         );
-      case 'diagrams':
+      case "diagrams":
         return (
           <DiagramContainer>
             <DiagramBox>
@@ -217,20 +245,20 @@ function greet() {
       {/* Tabs */}
       <TabContainer>
         <TabButton
-          active={selectedTab === 'script'}
-          onClick={() => setSelectedTab('script')}
+          active={selectedTab === "script"}
+          onClick={() => setSelectedTab("script")}
         >
           <FileText size={16} /> Script
         </TabButton>
         <TabButton
-          active={selectedTab === 'code'}
-          onClick={() => setSelectedTab('code')}
+          active={selectedTab === "code"}
+          onClick={() => setSelectedTab("code")}
         >
           <Code size={16} /> Code
         </TabButton>
         <TabButton
-          active={selectedTab === 'diagrams'}
-          onClick={() => setSelectedTab('diagrams')}
+          active={selectedTab === "diagrams"}
+          onClick={() => setSelectedTab("diagrams")}
         >
           <AlertCircle size={16} /> Diagrams
         </TabButton>
