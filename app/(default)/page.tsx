@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <>
       <AuthHeader />
+      <AuthHeader />
       <PageIllustration />
       <Hero />
       <Workflows />
