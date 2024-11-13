@@ -55,7 +55,6 @@ const GTCCreator = () => {
 
         {/* Recommended Templates Section */}
         <RecommendedTemplates
-          templates={templates}
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />

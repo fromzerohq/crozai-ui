@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import { FileCode, GitBranch, WrenchIcon, PlaySquare } from "lucide-react";
+import { FileCode, GitBranch, WrenchIcon, PlaySquare, Route } from "lucide-react";
 
 const IconGrid = () => {
   const router = useRouter();
@@ -11,12 +11,13 @@ const IconGrid = () => {
   };
 
   return (
-    <div className="mx-auto grid max-w-3xl grid-cols-4 gap-8">
+    <div className="mx-auto grid max-w-3xl grid-cols-5 gap-8">
       {[
+        { icon: <GitBranch size={24} />, label: "Codebase", type: "repo" },
+        { icon: <Route size={24} />, label: "Roadmap", type: "tickets" },
         { icon: <FileCode size={24} />, label: "API", type: "api" },
-        { icon: <GitBranch size={24} />, label: "Repo", type: "repo" },
         { icon: <WrenchIcon size={24} />, label: "Tools", type: "tools" },
-        { icon: <PlaySquare size={24} />, label: "C2C", type: "c2c" },
+        { icon: <PlaySquare size={24} />, label: "Content", type: "c2c" },
       ].map((item, index) => (
         <div
           key={index}

@@ -1,11 +1,40 @@
 import React from "react";
 import Button from "./button";
 import Tabs from "./tabs";
-import { FileCode, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import Card from "./card";
 import CardContent from "./cardcontent";
+import Image from "next/image";
 
-const RecommendedTemplates = ({ templates, activeTab, setActiveTab }: any) => {
+const RecommendedTemplates = ({ activeTab, setActiveTab }: any) => {
+  // Sample templates data with image URLs
+  const templates = [
+    {
+      title: "Payment Integration",
+      category: "API Template",
+      users: "2.1k users",
+      image: "/images/thumb.png"
+    },
+    {
+      title: "Authentication Flow",
+      category: "Codebase Template",
+      users: "1.8k users",
+      image: "/images/thumb.png"
+    },
+    {
+      title: "Database Schema",
+      category: "API Template",
+      users: "1.5k users",
+      image: "/images/thumb.png"
+    },
+    {
+      title: "User Management",
+      category: "Others",
+      users: "1.2k users",
+      image: "/images/thumb.png"
+    }
+  ];
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -52,13 +81,17 @@ const RecommendedTemplates = ({ templates, activeTab, setActiveTab }: any) => {
         {templates.map((template, index) => (
           <Card
             key={index}
-            className="group transition-all duration-300 hover:border-blue-500/50"
+            className="group cursor-pointer transition-all duration-300 hover:border-blue-500/50"
           >
-            <div className="flex h-48 items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
-              <FileCode
-                size={40}
-                className="text-gray-600 transition-colors group-hover:text-blue-400"
+            <div className="relative h-48 overflow-hidden">
+              <Image
+                src={template.image}
+                alt={template.title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/90 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
             <CardContent>
               <h3 className="font-medium text-gray-200 transition-colors group-hover:text-blue-400">
