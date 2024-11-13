@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Play, Edit, Eye, MoreVertical, Clock, Calendar, Settings, Tags, ChevronRight, MessageCircle, Share2, GitBranch, Code, Terminal, Palette, ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const CompactVideoCard = ({ title, thumbnail, duration, branch }) => (
     <div className="bg-gray-800 rounded-lg overflow-hidden w-[380px] h-[300px] shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:-translate-y-1">
@@ -43,127 +44,133 @@ const CompactVideoCard = ({ title, thumbnail, duration, branch }) => (
     </div>
   );
   
-  
-  const DetailedVideoCard = ({ title, thumbnail, duration, status, description, tags, lastModified, branch, commits, dependencies, fileSize, version }) => (
-    <div className="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
-      <div className="border-b border-gray-700 px-6 py-4">
-        <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
-        <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
-          <span className="flex items-center gap-1">
-            <GitBranch className="w-4 h-4" />
-            {branch}
-          </span>
-          <span className="flex items-center gap-1">
-            <Code className="w-4 h-4" />
-            {commits} commits
-          </span>
-        </div>
-      </div>
-  
-      <div className="flex gap-6 p-6">
-        <div className="relative w-96">
-          <div className="relative w-full h-56">
-            <img 
-              src={thumbnail} 
-              alt={title} 
-              className="w-full h-full object-cover rounded-lg"
-            />
-            <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded-md flex items-center gap-1">
-              <Clock className="w-4 h-4" />
-              <span className="text-sm">{duration}</span>
-            </div>
-          </div>
-  
-          {/* Slide Indicator Section */}
-          <div className="mt-3 text-center">
-            {/* <span className="text-xs text-gray-400">Slide 1 of 5</span> */}
-            <div className="flex justify-center gap-1 mt-1 ">
-              {[...Array(5)].map((_, index) => (
-                <span
-                  key={index}
-                  className={`w-2 h-2 hover:bg-purple-700 hover:cursor-pointer rounded-full ${
-                    index === 0 ? "bg-purple-500" : "bg-gray-600"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-  
-        <div className="flex-1">
-          <div className="flex justify-between items-start mb-4">
-            <div className="space-y-3">
-              <div className="flex items-center gap-4 text-sm text-gray-400">
-                <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  Last updated: {lastModified}
-                </span>
-              </div>
-  
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag, index) => (
-                  <span key={index} className="px-3 py-1 bg-gray-700 rounded-full text-sm">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-  
-            <div className="flex gap-2">
-              <button className="p-2 hover:bg-gray-700 rounded-lg transition-colors">
-                <Share2 className="w-5 h-5" />
-              </button>
-              <button className="p-2 hover:bg-gray-700 rounded-lg transition-colors">
-                <MoreVertical className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-  
-          <p className="text-gray-300 mb-4 line-clamp-2">{description}</p>
-  
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-700/50 rounded-lg p-3">
-              <h4 className="text-sm font-medium mb-2">Files Included</h4>
-              <div className="text-sm text-gray-300 space-y-1">
-                {dependencies.map((dep, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <Code className="w-4 h-4 text-purple-400" />
-                    <span>{dep}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-  
-          <div className="flex items-center justify-between">
-            <div className="flex gap-2">
-              <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors">
-                <Terminal className="w-4 h-4" />
-                Code Editor
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-                <Play className="w-4 h-4" />
-                Generate
-              </button>
-              <button className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-                <Eye className="w-4 h-4" />
-                Preview
-              </button>
-            </div>
-            
-            <span className={`px-3 py-1.5 rounded-full text-sm ${
-              status === 'Generated' ? 'bg-green-500/20 text-green-400' :
-              status === 'Processing' ? 'bg-yellow-500/20 text-yellow-400' :
-              'bg-blue-500/20 text-blue-400'
-            }`}>
-              {status}
+  const DetailedVideoCard = ({ title, thumbnail, duration, status, description, tags, lastModified, branch, commits, dependencies, fileSize, version }) => {
+    const router = useRouter(); // Initialize router inside the component
+
+    return (
+      <div className="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+        <div className="border-b border-gray-700 px-6 py-4">
+          <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
+          <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
+            <span className="flex items-center gap-1">
+              <GitBranch className="w-4 h-4" />
+              {branch}
+            </span>
+            <span className="flex items-center gap-1">
+              <Code className="w-4 h-4" />
+              {commits} commits
             </span>
           </div>
         </div>
+    
+        <div className="flex gap-6 p-6">
+          <div className="relative w-96">
+            <div className="relative w-full h-56">
+              <img 
+                src={thumbnail} 
+                alt={title} 
+                className="w-full h-full object-cover rounded-lg"
+              />
+              <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded-md flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                <span className="text-sm">{duration}</span>
+              </div>
+            </div>
+    
+            {/* Slide Indicator Section */}
+            <div className="mt-3 text-center">
+              {/* <span className="text-xs text-gray-400">Slide 1 of 5</span> */}
+              <div className="flex justify-center gap-1 mt-1 ">
+                {[...Array(5)].map((_, index) => (
+                  <span
+                    key={index}
+                    className={`w-2 h-2 hover:bg-purple-700 hover:cursor-pointer rounded-full ${
+                      index === 0 ? "bg-purple-500" : "bg-gray-600"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+    
+          <div className="flex-1">
+            <div className="flex justify-between items-start mb-4">
+              <div className="space-y-3">
+                <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    Last updated: {lastModified}
+                  </span>
+                </div>
+    
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, index) => (
+                    <span key={index} className="px-3 py-1 bg-gray-700 rounded-full text-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+    
+              <div className="flex gap-2">
+                <button className="p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                  <Share2 className="w-5 h-5" />
+                </button>
+                <button className="p-2 hover:bg-gray-700 rounded-lg transition-colors">
+                  <MoreVertical className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+    
+            <p className="text-gray-300 mb-4 line-clamp-2">{description}</p>
+    
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="bg-gray-700/50 rounded-lg p-3">
+                <h4 className="text-sm font-medium mb-2">Files Included</h4>
+                <div className="text-sm text-gray-300 space-y-1">
+                  {dependencies.map((dep, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <Code className="w-4 h-4 text-purple-400" />
+                      <span>{dep}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+    
+            <div className="flex items-center justify-between">
+              <div className="flex gap-2">
+                <button
+                  className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+                  onClick={() => router.push('/generator')} // Redirect to generate page on click
+                >
+                  <Terminal className="w-4 h-4" />
+                  Edit
+                </button>
+                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
+                  <Play className="w-4 h-4" />
+                  Generate
+                </button>
+                <button className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+                  <Eye className="w-4 h-4" />
+                  Preview
+                </button>
+              </div>
+              
+              <span className={`px-3 py-1.5 rounded-full text-sm ${
+                status === 'Generated' ? 'bg-green-500/20 text-green-400' :
+                status === 'Processing' ? 'bg-yellow-500/20 text-yellow-400' :
+                'bg-blue-500/20 text-blue-400'
+              }`}>
+                {status}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
-   
+    );
+  };
+  
 
 const VideosDashboard = () => {
   const exampleVideos = [
@@ -213,7 +220,7 @@ const VideosDashboard = () => {
       version: "1.5.0"
     }
   ];
-
+  
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
       <div className="max-w-7xl mx-auto">

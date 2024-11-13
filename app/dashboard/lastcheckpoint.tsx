@@ -10,9 +10,6 @@ const LastCheckpoint = () => {
         <h2 className="text-2xl font-bold text-gray-100">LAST CHECKPOINT</h2>
         <div className="h-1 w-1 rounded-full bg-blue-400"></div>
       </div>
-      <button className="btn custom-class ml-4 text-sm hover:bg-blue-500 focus:outline-none md:py-4 lg:text-lg">
-        Click me!
-      </button>
 
       <div className="grid grid-cols-4 gap-6">
         {[1, 2, 3, 4].map((item) => (

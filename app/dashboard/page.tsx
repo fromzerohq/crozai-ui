@@ -47,16 +47,6 @@ const GTCCreator = () => {
             CREATE NEW
           </h1>
           {/* Animated Text */}
-          <h2 className="mb-12 bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-center text-3xl font-bold text-transparent">
-            <Typewriter
-              options={{
-                strings: ["GTC : GenAI Tech Content"], // Added prefix for clarity
-                autoStart: true, // Start automatically
-                loop: true, // Loop the typing effect
-                deleteSpeed: 50, // Speed at which text is deleted
-              }}
-            />
-          </h2>
           <IconGrid />
         </div>
 
